@@ -83,6 +83,42 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <configuration>
+            <formats>
+              <format>zip</format>
+            </formats>
+            <fileSets>
+              <fileSet>
+                <directory>src/main/java/fr/ut2j/m1ice/gla</directory>
+                <outputDirectory>target</outputDirectory>
+              </fileSet>
+              <fileSet>
+                <directory>src/test/java/fr/ut2j/m1ice/gla</directory>
+                <outputDirectory>target</outputDirectory>
+              </fileSet>
+            </fileSets>
+            <descriptorRefs>
+              <descriptorRef>jar-with-dependencies</descriptorRef>
+            </descriptorRefs>
+            <archive>
+              <manifest>
+                <mainClass>fr.ut2j.m1ice.ci.App</mainClass>
+              </manifest>
+            </archive>
+          </configuration>
+          <executions>
+            <execution>
+              <id>make-assembly</id> <!-- this is used for inheritance merges -->
+              <phase>package</phase> <!-- bind to the packaging phase -->
+              <goals>
+                <goal>single</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>
